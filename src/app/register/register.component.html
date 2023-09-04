@@ -1,0 +1,104 @@
+<div class="flex flex-col justify-between bg-image" style="background-image: url('assets/images/reagister.png');background-size: auto 100%;background-repeat: no-repeat; background-position: left top;  height: 100vh; min-height: 100vh;">
+    <div class="flex flex-col items-center lg: lg:flex-row lg:space-x-10">
+
+        
+        <div class="lg:p-12 max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
+            <form class="lg:p-10 p-6 space-y-3 relative bg-white shadow-xl rounded-md" [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off"  novalidate> 
+                <h1 class="lg:text-2xl text-xl font-semibold mb-6"> REGISTER </h1>
+                <div class="text-center error" style="font-size:16px;" *ngIf="!hideSuccessMsg">
+                    <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{error}}</strong> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-3">
+                    <div>
+                        <label class="mb-0"> First Name </label>
+                        <input type="text" placeholder="First Name *" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full" formControlName="first_name" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
+                        <div *ngIf="submitted && f.first_name.errors" class="text-danger">
+                            <div *ngIf="f.first_name.errors.required">
+                                First name is required.
+                            </div>
+                            <div *ngIf="f.first_name.errors?.['minlength']">
+                                First name must be at least 2 characters long.
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="mb-0"> Last  Name </label>
+                        <input type="text" placeholder="Last Name *" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full" formControlName="last_name" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
+                        <div *ngIf="submitted && f.last_name.errors" class="text-danger">
+                            <div *ngIf="f.last_name.errors.required">
+                                Last name is required.
+                            </div>
+                            <div *ngIf="f.last_name.errors?.['minlength']">
+                                Last name must be at least 2 characters long.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+               
+
+
+                <div>
+                    <label class="mb-0"> Email Address </label>
+                    <input type="email" placeholder="Enter email address *" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full" formControlName="email" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="text-danger">
+                        <div *ngIf="f.email.errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <label class="mb-0"> Mobile Number </label>
+                    <input type="text" placeholder="Mobile Number *" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full" formControlName="phone" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                    <div *ngIf="submitted && f.phone.errors" class="text-danger">
+                        <div *ngIf="f.phone.errors.required">
+                            Mobile is required.
+                        </div>
+                        <div *ngIf="f.phone.errors?.['minlength']">
+                            Mobile must be at least 10 characters long.
+                        </div>
+                        <div *ngIf="f.phone.errors?.['maxlength']">
+                            Mobile not more than 10 characters long.
+                        </div>
+                        <div *ngIf="f.phone.errors?.['pattern']">
+                            Mobile number must be digit.
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="mb-0"> Organization </label>
+                    <input type="text" placeholder="Enter Organization name *" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full" formControlName="organization" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.organization.errors }">
+                    <div *ngIf="submitted && f.organization.errors" class="text-danger">
+                        <div *ngIf="f.organization.errors.required">
+                            Organization name is required.
+                        </div>
+                        <div *ngIf="f.organization.errors?.['minlength']">
+                            Organization name must be at least 4 characters long.
+                        </div>
+                    </div>
+                </div>
+
+
+
+              
+
+                <button type="submit" class="bg-blue-600 font-semibold p-3 rounded-md text-center text-white w-full">
+                    Register Now
+                </button>
+                <hr class="pb-3.5">
+                
+            </form>
+
+           
+        </div>
+
+    </div>
+</div>

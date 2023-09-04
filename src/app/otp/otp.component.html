@@ -1,0 +1,60 @@
+<div class="flex flex-col justify-between bg-image h-100" style="background-image: url('assets/images/otpauhenticate.png');background-size: auto 100%;background-repeat: no-repeat; background-position: left top; height: 100vh; min-height: 100vh;">
+    <div class="flex flex-col items-center lg: lg:flex-row lg:space-x-10">
+
+        
+        <div class="lg:p-12 max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
+            <form class="lg:p-10 p-6 space-y-3 relative bg-white shadow-xl rounded-md" [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off"  novalidate> 
+                <h1 class="lg:text-2xl text-xl font-semibold mb-6"> OTP Authentication </h1>
+                <div class="text-center error" style="font-size:16px;" *ngIf="!hideSuccessMsg">
+                    <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{error}}</strong> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+
+               
+                   
+
+
+               
+
+
+                
+
+
+                <div>
+                    <label class="mb-0"> OTP </label>
+                    <input type="text" placeholder="OTP *" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full" formControlName="user_input_otp" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.user_input_otp.errors }">
+                    <div *ngIf="submitted && f.user_input_otp.errors" class="text-danger">
+                        <div *ngIf="f.user_input_otp.errors.required">
+                            OTP is required.
+                        </div>
+                        <div *ngIf="f.user_input_otp.errors?.['minlength']">
+                            OTP must be at least 6 characters long.
+                        </div>
+                        <div *ngIf="f.user_input_otp.errors?.['maxlength']">
+                            OTP not more than 6 characters long.
+                        </div>
+                        <div *ngIf="f.user_input_otp.errors?.['pattern']">
+                            OTP number must be digit.
+                        </div>
+                    </div>
+                </div>
+
+               
+
+
+
+              
+
+                <button type="submit" class="bg-blue-600 font-semibold p-3 rounded-md text-center text-white w-full">
+                    Verify
+                </button>
+                <hr class="pb-3.5">
+                
+            </form>
+
+           
+        </div>
+
+    </div>
+</div>
